@@ -8,13 +8,12 @@ zmodload -i zsh/terminfo
 # shell options
 setopt auto_param_slash
 setopt autocd
-setopt complete_aliases
-setopt correct
-setopt correct
 setopt hist_ignore_dups
 setopt sharehistory
 setopt nobeep
 setopt noflowcontrol
+setopt promptsubst
+setopt numericglobsort
 
 # history options
 HISTFILE=~/.zsh_history
@@ -54,14 +53,34 @@ else
         PROMPT="%F{green}%n%f%F{red}@%f%F{green}%m%f%F{cyan} [ %~ ]%f ${NL}%F{green}>%f "
 fi
 
+# add new line after each prompt
+unset _FIRST_PROMPT
+unset _WAS_CLEARED
+
+preexec() {
+        if [[ "$1" == "clear" ]]; then
+                _WAS_CLEARED=1
+        fi
+}
+
+precmd() {
+        if [[ -n "$_FIRST_PROMPT" && -z "$_WAS_CLEARED" ]]; then
+                print ""
+        else
+                _FIRST_PROMPT=1
+        fi
+
+        unset _WAS_CLEARED
+}
+
 # plugins
 autoload -Uz compinit && compinit
 autoload -Uz colors && colors
 
 # zsh completion settings
 zstyle ':completion:*' rehash true
-zstyle ':completion:*' insert-tab false
-zstyle ':completion:*' menu select
+zstyle ':completion:*' menu select=5 interactive
+zstyle ':completion:*' completer _complete _expand
 zstyle ':completion:*' select-prompt "--- MORE (%p) ---"
 zstyle ':completion:*' list-prompt "--- MORE (%p) ---"
 zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
