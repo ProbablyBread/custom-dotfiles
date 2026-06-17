@@ -35,11 +35,15 @@ bindkey -- '^H' backward-kill-word
 bindkey -- '5~' kill-word
 
 # menu key overrides
-bindkey -M menuselect '^C' send-break
-bindkey -M menuselect '\e' send-break
-bindkey -M menuselect 'q' send-break
-bindkey -M menuselect "$terminfo[kpp]" backward-word
-bindkey -M menuselect "$terminfo[knp]" forward-word
+bindkey -M menuselect '^C' send-break # ctrl c
+bindkey -M menuselect '\e' send-break # esc
+bindkey -M menuselect 'q' send-break # q
+bindkey -M menuselect "$terminfo[kpp]" backward-word # page up
+bindkey -M menuselect "$terminfo[knp]" forward-word # page down
+bindkey -M menuselect "$terminfo[kUP5]" backward-word # ctrl up
+bindkey -M menuselect "$terminfo[kDN5]" forward-word # ctrl down
+bindkey -M menuselect "$terminfo[kLFT5]" beginning-of-line # ctrl left
+bindkey -M menuselect "$terminfo[kRIT5]" end-of-line # ctrl right
 
 # custom prompts
 NL=$'\n'
