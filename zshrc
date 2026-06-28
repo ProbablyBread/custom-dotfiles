@@ -81,7 +81,7 @@ autoload -Uz colors && colors
 
 # zsh completion settings
 zstyle ':completion:*' rehash true
-zstyle ':completion:*' menu select=5 interactive
+zstyle ':completion:*' menu select interactive
 zstyle ':completion:*' completer _complete _expand
 zstyle ':completion:*' select-prompt "--- MORE (%p) ---"
 zstyle ':completion:*' list-prompt "--- MORE (%p) ---"
