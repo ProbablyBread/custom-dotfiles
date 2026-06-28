@@ -1,5 +1,5 @@
 # zshrc
-- .zshrc: dotfile for individual user accounts, simply sources /etc/zshrc
+- .zshrc: dotfile for individual user accounts, simply sources `/etc/zshrc`
 - zshrc: to be placed in `/etc/zshrc`
 
 # vimrc
