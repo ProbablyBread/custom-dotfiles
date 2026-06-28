@@ -153,7 +153,7 @@ if $COLORTERM == 'gnome-terminal'
 endif
 
 try
-    colorscheme tender
+    colorscheme habamax
 catch
 endtry
 
