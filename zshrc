@@ -28,10 +28,12 @@ alias ls='ls --color=auto'
 alias mv='mv -i'
 
 # key overrides
-[[ -n "${terminfo[kLFT5]}" ]] && bindkey -- "${terminfo[kLFT5]}" backward-word
-[[ -n "${terminfo[kRIT5]}" ]] && bindkey -- "${terminfo[kRIT5]}" forward-word
-bindkey -- '^H' backward-kill-word
-bindkey -- '5~' kill-word
+[[ -n "${terminfo[kLFT5]}" ]] && bindkey -- "${terminfo[kLFT5]}" backward-word # ctrl left
+[[ -n "${terminfo[kRIT5]}" ]] && bindkey -- "${terminfo[kRIT5]}" forward-word # ctrl right
+bindkey -- "^[[1~" beginning-of-line # home key
+bindkey -- "^[[4~" end-of-line # end key
+bindkey -- '^H' backward-kill-word # ctrl backspace
+bindkey -- '5~' kill-word # ctrl delete
 
 # menu key overrides
 bindkey -M menuselect '^C' send-break # ctrl c
