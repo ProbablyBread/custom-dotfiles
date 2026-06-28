@@ -1,3 +1,5 @@
+These dotfiles are customised to work well with Windows Terminal's Dark+ default theme to save my eyes.
+
 # zshrc
 - .zshrc: dotfile for individual user accounts, simply sources `/etc/zshrc`
 - zshrc: to be placed in `/etc/zshrc`
